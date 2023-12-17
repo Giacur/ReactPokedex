@@ -3,13 +3,14 @@ import './App.css';
 import Header from './components/Header';
 import NavBar from './components/NavBar';
 import MainSection from './components/MainSection';
+import Card from './components/Card';
 
 function App() {
 
   const [list , setList] = useState([]);
 
   useEffect( ()=>{
-      for (let index = 1; index < 13; index++) {
+      for (let index = 1; index < 101; index++) {
         const url = `https://pokeapi.co/api/v2/pokemon/${index}/`;
         const getPokemon = async ()=>{
             const response = await fetch(url);
@@ -25,7 +26,7 @@ function App() {
     }
   }, []);
 
-  console.log(list)
+  console.log(list[0])
 
 
   return (
@@ -36,10 +37,7 @@ function App() {
 
       <MainSection>
         {list.map(pokemon=>{
-            return  <article key={pokemon.name} className='w-1/4 shadow-md p-4 flex flex-col justify-center'>
-                      <img src={pokemon.sprites.other.dream_world.front_default} alt="" className='w-full h-2/3'/>
-                      <h2 className='text-center font-bold italic capitalize mt-5 text-2xl'>{pokemon.name}</h2>
-                    </article>
+            return  <Card key={pokemon.name} pokemon={pokemon}/>
           })}
       </MainSection>
     </>
