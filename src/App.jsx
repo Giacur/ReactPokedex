@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import NavBar from './components/NavBar';
+import MainSection from './components/MainSection';
 
 function App() {
 
@@ -32,14 +33,15 @@ function App() {
       <Header>
         <NavBar />
       </Header>
-      <section className='container mx-auto flex flex-wrap'>
+
+      <MainSection>
         {list.map(pokemon=>{
-          return  <article key={pokemon.name} className='w-1/4 shadow-md p-4 flex flex-col justify-center'>
-                    <img src={pokemon.sprites.other.dream_world.front_default} alt="" className='w-full h-2/3'/>
-                    <h2 className='text-center font-bold italic capitalize mt-5 text-2xl'>{pokemon.name}</h2>
-                  </article>
-        })}
-      </section>
+            return  <article key={pokemon.name} className='w-1/4 shadow-md p-4 flex flex-col justify-center'>
+                      <img src={pokemon.sprites.other.dream_world.front_default} alt="" className='w-full h-2/3'/>
+                      <h2 className='text-center font-bold italic capitalize mt-5 text-2xl'>{pokemon.name}</h2>
+                    </article>
+          })}
+      </MainSection>
     </>
   )
 }
