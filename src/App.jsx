@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import Header from './components/Header';
+import NavBar from './components/NavBar';
 
 function App() {
 
@@ -22,11 +24,14 @@ function App() {
     }
   }, []);
 
-  // console.log(list)
+  console.log(list)
 
 
   return (
     <>
+      <Header>
+        <NavBar />
+      </Header>
       <section className='container mx-auto flex flex-wrap'>
         {list.map(pokemon=>{
           return  <article key={pokemon.name} className='w-1/4 shadow-md p-4 flex flex-col justify-center'>
